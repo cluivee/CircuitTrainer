@@ -1,0 +1,2113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LowerBodyActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBCE2D"
+    android:gravity="center|top"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="New Workout"
+        android:textSize="36dp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Time:"
+                android:layout_marginBottom="-5dp"
+                android:textSize="18dp" />
+
+            <Chronometer android:id="@+id/chronometer"
+                android:format="@string/chronometer_initial_format"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:fontFamily="@font/baloo_bhai"
+                android:textSize="18dp"
+                />
+
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/totalTimeTV"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="00:00"-->
+            <!--                    android:textSize="18dp" />-->
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/startButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_shape_grey"
+            android:layout_gravity="center"
+            android:onClick="timerButtonOnClick"
+            android:text="Start!"
+            android:textSize="18dp"></Button>
+
+        <Button
+            android:id="@+id/resetButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_shape_grey"
+            android:gravity="center"
+            android:onClick="resetTimer2"
+            android:text="Reset"
+            android:textSize="18dp"></Button>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_above="@+id/bottomButtons"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true"
+            android:background="#e2e2e2">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FBCE2D"
+                android:gravity="center|top"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/RL1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB1"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/red_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET1"
+                        android:text="Squat"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB1"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 1"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET1"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV1"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_toLeftOf="@id/exerciseSecsET1"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_toLeftOf="@id/exerciseSecsTV1"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV1"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB1"
+                        android:layout_alignRight="@id/exercisePB1"
+                        android:layout_alignBottom="@id/exercisePB1"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp">
+
+                    </TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB1"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET1"
+                        android:text="Rest"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB1"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsEditText"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_toLeftOf="@+id/hoursText"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/hoursText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_toLeftOf="@id/restSecsEditText"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_toLeftOf="@id/minsText"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/minsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTimeTextView"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTimeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB1"
+                        android:layout_alignRight="@id/restPB1"
+                        android:layout_alignBottom="@id/restPB1"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/green_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET2"
+                        android:text="Burpees"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB2"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 2"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/greenMinsEditText"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_toLeftOf="@+id/greenMinsTextView"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/greenMinsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_toLeftOf="@id/greenSecsEditText"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/greenSecsEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_toLeftOf="@id/greenSecsTextView"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/greenSecsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/greenTimeTextView"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/greenTimeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB2"
+                        android:layout_alignRight="@id/exercisePB2"
+                        android:layout_alignBottom="@id/exercisePB2"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/RL4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET2"
+                        android:text="Rest"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB2"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET2"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_toLeftOf="@+id/restMinsTV2"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_toLeftOf="@id/restSecsET2"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_toLeftOf="@id/restSecsTV2"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV2"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB2"
+                        android:layout_alignRight="@id/restPB2"
+                        android:layout_alignBottom="@id/restPB2"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/blue_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET3"
+                        android:text="Star Jumps"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB3"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 3"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/blueMinsEditText"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/blueMinsTextView"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/blueMinsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_toLeftOf="@id/blueSecsEditText"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/blueSecsEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_toLeftOf="@id/blueSecsTextView"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/blueSecsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/blueTimeTextView"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/blueTimeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB3"
+                        android:layout_alignRight="@id/exercisePB3"
+                        android:layout_alignBottom="@id/exercisePB3"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET3"
+                        android:text="Rest"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB3"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET3"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_toLeftOf="@+id/restMinsTV3"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_toLeftOf="@id/restSecsET3"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_toLeftOf="@id/restSecsTV3"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV3"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB3"
+                        android:layout_alignRight="@id/restPB3"
+                        android:layout_alignBottom="@id/restPB3"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB4"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/red_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET4"
+                        android:text="High Knees"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB4"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 4"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET4"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV4"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_toLeftOf="@id/exerciseSecsET4"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_toLeftOf="@id/exerciseSecsTV4"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV4"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB4"
+                        android:layout_alignRight="@id/exercisePB4"
+                        android:layout_alignBottom="@id/exercisePB4"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB4"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET4"
+                        android:text="Rest"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB4"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET4"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_toLeftOf="@+id/restMinsTV4"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_toLeftOf="@id/restSecsET4"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_toLeftOf="@id/restSecsTV4"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV4"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB4"
+                        android:layout_alignRight="@id/restPB4"
+                        android:layout_alignBottom="@id/restPB4"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB5"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/green_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET5"
+                        android:text="Lunges"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB5"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 5"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET5"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV5"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_toLeftOf="@id/exerciseSecsET5"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_toLeftOf="@id/exerciseSecsTV5"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV5"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB5"
+                        android:layout_alignRight="@id/exercisePB5"
+                        android:layout_alignBottom="@id/exercisePB5"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB5"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET5"
+                        android:text="Rest"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB5"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET5"
+                        android:text="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_toLeftOf="@+id/restMinsTV5"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_toLeftOf="@id/restSecsET5"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_toLeftOf="@id/restSecsTV5"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV5"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB5"
+                        android:layout_alignRight="@id/restPB5"
+                        android:layout_alignBottom="@id/restPB5"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL11"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB6"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/blue_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET6"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB6"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 6"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV6"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_toLeftOf="@id/exerciseSecsET6"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_toLeftOf="@id/exerciseSecsTV6"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV6"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB6"
+                        android:layout_alignRight="@id/exercisePB6"
+                        android:layout_alignBottom="@id/exercisePB6"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/RL12"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB6"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET6"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB6"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_toLeftOf="@+id/restMinsTV6"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_toLeftOf="@id/restSecsET6"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_toLeftOf="@id/restSecsTV6"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV6"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB6"
+                        android:layout_alignRight="@id/restPB6"
+                        android:layout_alignBottom="@id/restPB6"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL13"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB7"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/red_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET7"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB7"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 7"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV7"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_toLeftOf="@id/exerciseSecsET7"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_toLeftOf="@id/exerciseSecsTV7"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV7"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB7"
+                        android:layout_alignRight="@id/exercisePB7"
+                        android:layout_alignBottom="@id/exercisePB7"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL14"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB7"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET7"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB7"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_toLeftOf="@+id/restMinsTV7"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_toLeftOf="@id/restSecsET7"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_toLeftOf="@id/restSecsTV7"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV7"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB7"
+                        android:layout_alignRight="@id/restPB7"
+                        android:layout_alignBottom="@id/restPB7"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL15"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB8"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/green_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET8"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB8"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 8"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV8"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_toLeftOf="@id/exerciseSecsET8"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_toLeftOf="@id/exerciseSecsTV8"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV8"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB8"
+                        android:layout_alignRight="@id/exercisePB8"
+                        android:layout_alignBottom="@id/exercisePB8"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL16"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB8"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET8"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB8"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_toLeftOf="@+id/restMinsTV8"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_toLeftOf="@id/restSecsET8"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_toLeftOf="@id/restSecsTV8"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV8"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB8"
+                        android:layout_alignRight="@id/restPB8"
+                        android:layout_alignBottom="@id/restPB8"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL17"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB9"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/blue_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET9"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB9"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 9"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV9"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_toLeftOf="@id/exerciseSecsET9"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_toLeftOf="@id/exerciseSecsTV9"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV9"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB9"
+                        android:layout_alignRight="@id/exercisePB9"
+                        android:layout_alignBottom="@id/exercisePB9"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL18"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB9"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET9"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB9"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_toLeftOf="@+id/restMinsTV9"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_toLeftOf="@id/restSecsET9"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_toLeftOf="@id/restSecsTV9"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV9"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB9"
+                        android:layout_alignRight="@id/restPB9"
+                        android:layout_alignBottom="@id/restPB9"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL19"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/exercisePB10"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/red_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/exerciseET10"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/exercisePB10"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Exercise 10"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/exerciseMinsET10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toLeftOf="@+id/exerciseMinsTV10"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseMinsTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_toLeftOf="@id/exerciseSecsET10"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/exerciseSecsET10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_toLeftOf="@id/exerciseSecsTV10"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/exerciseSecsTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/exerciseTimeTV10"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/exerciseTimeTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/exercisePB10"
+                        android:layout_alignRight="@id/exercisePB10"
+                        android:layout_alignBottom="@id/exercisePB10"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RL20"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/restPB10"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:indeterminate="false"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/grey_progress_drawable" />
+
+                    <EditText
+                        android:id="@+id/restET10"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/restPB10"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Rest"
+                        android:inputType="textCapSentences"
+                        android:maxLength="20"
+                        android:translationZ="6dp"></EditText>
+
+                    <EditText
+                        android:id="@+id/restMinsET10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_toLeftOf="@+id/restMinsTV10"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restMinsTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_toLeftOf="@id/restSecsET10"
+                        android:gravity="center"
+                        android:text="m"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <EditText
+                        android:id="@+id/restSecsET10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_toLeftOf="@id/restSecsTV10"
+                        android:background="@android:color/transparent"
+                        android:hint="00"
+                        android:inputType="number"
+                        android:translationZ="5dp" />
+
+                    <TextView
+                        android:id="@+id/restSecsTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@id/restTV10"
+                        android:gravity="center"
+                        android:text="s"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/restTV10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/restPB10"
+                        android:layout_alignRight="@id/restPB10"
+                        android:layout_alignBottom="@id/restPB10"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textSize="18dp"
+                        android:translationZ="5dp"></TextView>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center|top"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:background="#FBCE2D">
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_shape_grey"
+                android:gravity="center"
+                android:onClick="addButtonClick"
+                android:text="+ Add Exercise"
+                android:textSize="18dp"></Button>
+
+            <Button
+                android:id="@+id/removeButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_shape_grey"
+                android:gravity="center"
+                android:onClick="removeButtonClick"
+                android:text="- Remove"
+                android:textSize="18dp"></Button>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+

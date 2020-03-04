@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBCE2D"
+    tools:context=".SuggestedWorkoutActivity"
+    android:orientation="vertical"
+    android:gravity="center|top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Workout Timer"
+        android:textSize="48dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+
+    <Button
+        android:onClick="upperBodyClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/newWorkoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Upper Body Workout"
+        android:textSize="24dp"
+        android:background="@drawable/rounded_shape_red"
+        style="@style/AppTheme.RoundedCornerMaterialButton" />
+
+    <Button
+        android:onClick="lowerBodyClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/savedWorkoutsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Lower Body Workout"
+        android:textSize="24dp"
+        android:background="@drawable/rounded_shape_green"
+        style="@style/AppTheme.RoundedCornerMaterialButton" />
+
+
+
+</LinearLayout>
