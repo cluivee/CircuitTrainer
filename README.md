@@ -1,4 +1,4 @@
-# WorkoutTimer
+# CircuitTrainer
 Preview of the Workout Timer
 Android App that lets you create a circuit of exercises and will play a sound notifying you when it is time to move onto the next exercise.
 
